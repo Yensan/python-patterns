@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
@@ -51,7 +51,8 @@ def flyRocketPowered():
 from abc import ABCMeta, abstractmethod
 ABC = ABCMeta(u'ABC', (object,), {})
 class Duck(ABC):
-    def __init__(self, flyf: Callable[[], None], quackf: Callable[[], None]):
+    def __init__(self, flyf, quackf):
+    # def __init__(self, flyf: Callable[[], None], quackf: Callable[[], None]):
         if isinstance(flyf, Callable) and isinstance(quackf, Callable):
             self.quackBehavior = MethodType(quackf, self)
             self.flyBehavior = flyf
@@ -61,21 +62,25 @@ class Duck(ABC):
         self.quackBehavior()
     def performFly(self):
         self.flyBehavior()
-    def setFlyBehavior(self, flyf: Callable):
+    def setFlyBehavior(self, flyf):
+    # def setFlyBehavior(self, flyf: Callable):
         if flyf is not None:
             self.flyBehavior = flyf
-    def setQuackBehavior(self, quackf: Callable):
+    def setQuackBehavior(self, quackf):
+    # def setQuackBehavior(self, quackf: Callable):
         if quackf is not None:
             self.quackBehavior = MethodType(quackf, self)
     def swim(self):
         print("All ducks float")
 class MallardDuck(Duck):
-    def __init__(self, flyf: Callable=flyWithWings, quackf: Callable=quack):
+    def __init__(self, flyf=flyWithWings, quackf=quack):
+    # def __init__(self, flyf: Callable=flyWithWings, quackf: Callable=quack):
         super(MallardDuck, self).__init__(flyf, quackf)
     def display(self):
         print("MallardDuck")
 class ModelDuck(Duck):
-    def __init__(self, flyf: Callable=flyNoWay, quackf: Callable=quack):
+    def __init__(self, flyf=flyNoWay, quackf=quack):
+    # def __init__(self, flyf: Callable=flyNoWay, quackf: Callable=quack):
         super(ModelDuck, self).__init__(flyf, quackf)
     def display(self):
         print("ModelDuck")
@@ -85,8 +90,6 @@ if __name__ == "__main__":
     mallard.display()
     mallard.performQuack()
     mallard.performFly()
-    if isinstance(mallard, Callable):
-        pass
     model = ModelDuck()
     model.display()
     model.performFly()

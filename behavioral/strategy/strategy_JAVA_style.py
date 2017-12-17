@@ -33,7 +33,7 @@ from abc import ABCMeta, abstractmethod
 ABC = ABCMeta(u'ABC', (object,), {})  # 跨越 py2 / py3 的写法
 class FlyBehavior(ABC):
     @classmethod   # 如果必须运行某些方法，使用 @classmethod
-    def version(self): return "1.0"
+    def version(cls): return "1.0"
     @abstractmethod # 子类如果不实现这个接口，实例化子类时 就会报错
     def fly(self): pass
 class FlyWithWings(FlyBehavior):
@@ -57,7 +57,8 @@ class Duck(ABC):
         self.quackBehavior.quack()
     def performFly(self):
         self.flyBehavior.fly()
-    def setFlyBehavior(self, fly:FlyBehavior):
+    def setFlyBehavior(self, fly):
+    # def setFlyBehavior(self, fly: FlyBehavior):
         # 接口还可以校验
         if not isinstance(fly, FlyBehavior):
             raise Exception('接口类型 错误')
@@ -66,7 +67,8 @@ class Duck(ABC):
         if not FlyBehavior.version() == '1.0':
             raise Exception('接口版本 错误')
         self.flyBehavior = fly
-    def setQuackBehavior(self, quack:QuackBehavior):
+    def setQuackBehavior(self, quack):
+    # def setQuackBehavior(self, quack: QuackBehavior):
         self.quackBehavior = quack
     def swim(self):
         print("All ducks float")

@@ -52,7 +52,7 @@ __Behavioral Patterns__:
 | [registry](behavioral/registry.py) | keep track of all subclasses of a given class |
 | [specification](behavioral/specification.py) |  business rules can be recombined by chaining the business rules together using boolean logic |
 | [state](behavioral/state.py) | logic is organized into a discrete number of potential states and the next state that can be transitioned to |
-| [strategy](behavioral/strategy.py) | selectable operations over the same data |
+| [strategy](behavioral/strategy) | selectable operations over the same data |
 | [template](behavioral/template.py) | an object imposes a structure but takes pluggable components |
 | [visitor](behavioral/visitor.py) | invoke a callback for all items of a collection |
 
